@@ -25,11 +25,22 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        // dd('login POST OK', $request->all());
         $request->authenticate();
 
         $request->session()->regenerate();
 
         return redirect()->intended('top');
+    }
+
+    public function destroy(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
     }
 
 }

@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Database\Migrations\Migration;
+//Migration を継承したクラス 1ファイル = 1テーブル（が基本）
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
@@ -11,9 +12,10 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up()//テーブルを作る処理(php artisan migrate)
     {
         Schema::create('users', function (Blueprint $table) {
+            //$table にカラム定義を書く
             $table->id(); // 自動インクリメントの符号なし整数のプライマリキー
             $table->string('username', 255);
             $table->string('email', 255)->unique(); // 一意制約
@@ -30,7 +32,7 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down()//テーブルを削除する処理(php artisan migrate:rollback)
     {
         Schema::dropIfExists('users');
     }

@@ -33,7 +33,8 @@
     <div id="container">
       {{ $slot }}
     </div>
-    <div id="side-bar">
+    @include('layouts.sidebar')
+    <!-- <div id="side-bar">
       <div id="confirm">
         <p>〇〇さんの</p>
         <div>
@@ -48,7 +49,7 @@
         <p class="btn"><a href="">フォロワーリスト</a></p>
       </div>
       <p class="btn"><a href="">ユーザー検索</a></p>
-    </div>
+    </div> -->
   </div>
   <footer>
   </footer>

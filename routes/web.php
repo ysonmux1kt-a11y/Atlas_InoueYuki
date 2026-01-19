@@ -1,30 +1,53 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\PostsController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
-
-
+// 認証系ルート（login / register / logout）
 require __DIR__ . '/auth.php';
 
-Route::get('top', [PostsController::class, 'index']);
+/*
+|--------------------------------------------------------------------------
+| ログイン後のみアクセス可能なページ
+|--------------------------------------------------------------------------
+*/
+Route::middleware('auth')->group(function () {
 
-Route::get('profile', [ProfileController::class, 'profile']);
+    // ユーザー登録完了画面
+    Route::get('/added', [RegisteredUserController::class, 'added'])
+        ->name('added');
 
-Route::get('search', [UsersController::class, 'index']);
+    // トップページ
+    Route::get('/top', [PostsController::class, 'index'])
+        ->name('top');
 
-Route::get('follow-list', [PostsController::class, 'index']);
-Route::get('follower-list', [PostsController::class, 'index']);
+    // 投稿登録
+    Route::post('/top', [PostsController::class, 'store'])
+        ->name('posts.store');
+
+    // プロフィール
+    Route::get('/profile', [ProfileController::class, 'profile'])
+        ->name('profile');
+
+    // ユーザー検索（検索機能は後で実装）
+    Route::get('/search', [UsersController::class, 'search'])
+        ->name('user.search');
+
+    // フォロー / フォロワー一覧
+    Route::get('/follow-list', [PostsController::class, 'index'])
+        ->name('follow-list');
+    Route::get('/follower-list', [PostsController::class, 'index'])
+        ->name('follower-list');
+
+    // 他ユーザーのプロフィール
+    Route::get('/user/{id}', [UsersController::class, 'show']);
+});

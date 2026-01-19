@@ -1,22 +1,73 @@
 @charset "utf-8";
-html{
-}
-body{
-}
+
+html {}
+
+body {}
+
 /* header */
-header{
-    background:#186AC9;
+header {
+    background: #186AC9;
 }
 
 /* main content */
-#row{
+#row {
     display: flex;
     flex-flow: row wrap;
 }
-#container{
+
+#container {
     flex: 0 0 80%;
 }
-#side-bar{
+
+#side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+}
+
+/* 投稿フォーム */
+.post-form {
+    background: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+/* フォーム全体 */
+.post-form-inner {
+    display: flex;
+    gap: 10px;
+}
+
+/* ユーザーアイコン */
+.post-user-icon img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* 入力エリア */
+.post-input-area {
+    flex: 1;
+    position: relative;
+}
+
+.post-input-area textarea {
+    width: 100%;
+    resize: none;
+    padding-right: 40px;
+}
+
+/* 投稿ボタン（紙飛行機） */
+.post-submit-btn {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.post-submit-btn img {
+    width: 24px;
+    height: 24px;
 }

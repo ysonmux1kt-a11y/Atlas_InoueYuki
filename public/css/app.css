@@ -7966,3 +7966,31 @@ button.close {
     display: none !important
   }
 }
+
+/* ===== アコーディオンメニュー ===== */
+
+.accordion-menu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.accordion-btn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.arrow {
+  margin-left: 8px;
+  transition: transform 0.3s;
+}
+
+.accordion-menu.open {
+  display: block;
+}
+
+.arrow.rotate {
+  transform: rotate(180deg);
+}
