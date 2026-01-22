@@ -11,7 +11,8 @@ class PostsController extends Controller
     // トップページ表示
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::latest()->get();
+        return view('posts.index',compact('posts'));
     }
 
     // 投稿保存
@@ -25,6 +26,23 @@ class PostsController extends Controller
             'user_id' => Auth::id(),
             'content' => $request->content,
         ]);
+
+        return redirect()->route('top');
+    }
+
+
+    public function update(Request $request,Post $post){
+        //自分の投稿かチェック
+        if($post->user_id !== Auth::id()){
+            abort(403);
+        }
+        $request->validate([
+            'content' => ['required', 'string', 'min:1', 'max:150'],
+        ]);
+
+        // 更新
+        $post->content = $request->content;
+        $post->save();
 
         return redirect()->route('top');
     }

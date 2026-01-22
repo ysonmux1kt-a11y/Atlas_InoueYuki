@@ -34,6 +34,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/top', [PostsController::class, 'store'])
         ->name('posts.store');
 
+    // 投稿編集
+    Route::post('/posts/{post}',[PostsController::class,'update'])
+        ->name('posts.update');
+
     // プロフィール
     Route::get('/profile', [ProfileController::class, 'profile'])
         ->name('profile');
