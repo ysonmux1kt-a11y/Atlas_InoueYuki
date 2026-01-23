@@ -46,4 +46,14 @@ class PostsController extends Controller
 
         return redirect()->route('top');
     }
+
+    public function destroy(Post $post){
+        //自分の投稿かチェック
+        if($post->user_id !== Auth::id()){
+            abort(403);
+        }
+        $post->delete();
+
+        return redirect()->route('top');
+    }
 }

@@ -38,6 +38,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/posts/{post}',[PostsController::class,'update'])
         ->name('posts.update');
 
+    // 投稿削除
+    Route::delete('/posts/{post}',[PostsController::class,'destroy'])
+        ->name('posts.destroy');
+
     // プロフィール
     Route::get('/profile', [ProfileController::class, 'profile'])
         ->name('profile');

@@ -40,6 +40,18 @@
         </a>
       </div>
 
+      <!-- 削除アイコン（自分の投稿のみ） -->
+      <div class="post-delete">
+        <form action="{{ route('posts.destroy',$post->id) }}" method="post">
+          @csrf
+          @method('DELETE')
+
+          <button type="button" class="delete-button" data-post-id="{{ $post->id }}">
+            <img src="{{ asset('images/trash.png') }}" data-hover="{{ asset('images/trash-h.png') }}" alt="削除">
+          </button>
+        </form>
+      </div>
+
       <!-- 編集モーダル（最初は非表示） -->
       <div class="edit-modal" id="edit-modal-{{ $post->id }}" style="display:none;">
         <div class="edit-modal-content">
@@ -83,4 +95,42 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+<!-- 削除確認モーダル -->
+  <div class="delete-modal" id="delete-modal" style="display:none;">
+    <div class="delete-modal-content">
+      <h3>この投稿を削除します。よろしいでしょうか？</h3>
+
+      <form id="delete-form" method="post">
+        @csrf
+        @method('DELETE')
+
+        <button type="button" id="cancel-delete">キャンセル</button>
+        <button type="submit" id="confirm-delete">削除</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded',function(){
+
+      const deleteButtons=document.querySelectorAll('.delete-button');
+      const modal=document.getElementById('delete-modal');
+      const deleteForm=document.getElementById('delete-form');
+      const cancelBtn=document.getElementById('.cancel-delete');
+
+      deleteButtons.forEach(button=>{
+        button.addEventListener('click',function(){
+          const postId=this.dataset.postId;
+
+          deleteForm.action='/posts/' + postId;
+
+          modal.style.display='block';
+        });
+      });
+      cancelBtn.addEventListener('click',function(e){
+        e.preventDefault();
+        modal.style.display='flex';
+      });
+    });
+  </script>
 </x-login-layout>
