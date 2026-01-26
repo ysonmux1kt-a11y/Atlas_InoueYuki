@@ -89,7 +89,7 @@ html {
 
 .form-actions {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin-top: 20px;
 }
 
@@ -114,4 +114,35 @@ html {
     color: #ffffff;
     font-size: 13px;
     text-decoration: underline;
+}
+
+/* added画面用 */
+.added-name {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    margin: 6px 0 2px;
+}
+
+.added-welcome {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 18px;
+}
+
+.added-message {
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.8;
+    text-align: center;
+    margin: 0 0 18px;
+}
+
+.added-button {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
 }

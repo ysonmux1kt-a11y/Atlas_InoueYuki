@@ -47,9 +47,9 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        Auth::login($user);//登録完了ページでAuth::user()を使えるようにする
+        Auth::login($user);
+        return redirect()->route('added');
 
-        return redirect('added');
     }
 
     public function added(): View
