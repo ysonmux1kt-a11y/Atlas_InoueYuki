@@ -28,34 +28,16 @@
   <header>
     @include('layouts.navigation')
   </header>
-  <!-- Page Content -->
+
   <div id="row">
     <div id="container">
       {{ $slot }}
     </div>
+
     @include('layouts.sidebar')
-    <!-- <div id="side-bar">
-      <div id="confirm">
-        <p>〇〇さんの</p>
-        <div>
-          <p>フォロー数</p>
-          <p>〇〇名</p>
-        </div>
-        <p class="btn"><a href="">フォローリスト</a></p>
-        <div>
-          <p>フォロワー数</p>
-          <p>〇〇名</p>
-        </div>
-        <p class="btn"><a href="">フォロワーリスト</a></p>
-      </div>
-      <p class="btn"><a href="">ユーザー検索</a></p>
-    </div> -->
   </div>
-  <footer>
-  </footer>
+
   <script src="{{ asset('js/app.js') }}"></script>
-  <script src="JavaScriptファイルのURL"></script>
-  <script src="JavaScriptファイルのURL"></script>
 </body>
 
 </html>

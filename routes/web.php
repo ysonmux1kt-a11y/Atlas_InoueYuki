@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
@@ -15,6 +16,10 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 // 認証系ルート（login / register / logout）
 require __DIR__ . '/auth.php';
 
+// ログイン
+// Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+//     ->name('login');
+
 /*
 |--------------------------------------------------------------------------
 | ログイン後のみアクセス可能なページ
@@ -25,6 +30,7 @@ Route::middleware('auth')->group(function () {
     // ユーザー登録完了画面
     Route::get('/added', [RegisteredUserController::class, 'added'])
         ->name('added');
+
 
     // トップページ
     Route::get('/top', [PostsController::class, 'index'])

@@ -23,15 +23,18 @@
         <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     </head>
     <body>
-        <header>
-            <h1><img src="images/atlas.png"></h1>
-            <p>Social Network Service</p>
-        </header>
-        <div id="container">
-            {{ $slot }}
+        <div class="auth-wrapper">
+            <header class="auth-header">
+              <img src="{{ asset('images/atlas.png') }}" alt="Atlas" class="auth-logo">
+              <p class="auth-description">Social Network Service</p>
+            </header>
+
+          <div class="auth-card">
+          @yield('content')
+          </div>
         </div>
-        <script src="{{ asset('js/app.js') }}"></script>
+        <!-- <script src="{{ asset('js/app.js') }}"></script>
         <script src="JavaScriptファイルのURL"></script>
-        <script src="JavaScriptファイルのURL"></script>
+        <script src="JavaScriptファイルのURL"></script> -->
     </body>
 </html>

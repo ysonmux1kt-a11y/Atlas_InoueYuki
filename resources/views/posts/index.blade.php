@@ -29,11 +29,22 @@
   @foreach($posts as $post)
   <div class="post-item">
 
+    <!-- ユーザー情報 -->
+    <div class="post-user">
+      <img src="{{ asset('images/icon' . $post->user->icon . '.png') }}" alt="アイコン">
+    </div>
+
+    <div class="post-user-info">
+      <p class="user-name">{{ $post->user->username }}</p>
+      <p class="post-date">{{ $post->created_at->format('Y/m/d H:i') }}</p>
+    </div>
+
     <!-- 投稿内容 -->
     <p class="post-text">{{ $post->content }}</p>
 
     <!-- 編集アイコン（自分の投稿のみ） -->
     @if($post->user_id === Auth::id())
+
       <div class="post-edit">
         <a href="#" class="edit-button" data-post-id="{{ $post->id }}">
           <img src="{{ asset('images/edit.png') }}" alt="編集">
@@ -116,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const deleteButtons=document.querySelectorAll('.delete-button');
       const modal=document.getElementById('delete-modal');
       const deleteForm=document.getElementById('delete-form');
-      const cancelBtn=document.getElementById('.cancel-delete');
+      const cancelBtn=document.getElementById('cancel-delete');
 
       deleteButtons.forEach(button=>{
         button.addEventListener('click',function(){

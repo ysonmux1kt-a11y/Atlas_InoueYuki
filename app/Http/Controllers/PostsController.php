@@ -11,7 +11,19 @@ class PostsController extends Controller
     // トップページ表示
     public function index()
     {
-        $posts = Post::latest()->get();
+        $user =  Auth::user();
+
+        $followIds = $user->follows->pluck('followed_id');
+
+        $followIds[] = $user->id;
+
+        $posts = Post::with('user')
+            ->whereIn('user_id', $followIds)
+            ->orderBy('created_at','desc')
+            ->get();
+
+        // $posts = Post::latest()->get(); // 全投稿を新しい順に取得
+
         return view('posts.index',compact('posts'));
     }
 

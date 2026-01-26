@@ -4,6 +4,17 @@ html {}
 
 body {}
 
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: linear-gradient(180deg #1e88e5 0%,
+            #64b5f6 40%,
+            #fdd835 100%);
+}
+
 /* header */
 header {
     background: #186AC9;
