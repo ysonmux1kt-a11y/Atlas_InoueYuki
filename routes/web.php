@@ -62,6 +62,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/follower-list', [PostsController::class, 'index'])
         ->name('follower-list');
 
+    // フォロー・アンフォロー
+    Route::post('follow/{user}',[UsersController::class,'follow'])
+        ->name('follow');
+    Route::post('unfollow/{user}',[UsersController::class,'unfollow'])
+        ->name('unfollow');
+
     // 他ユーザーのプロフィール
     Route::get('/user/{id}', [UsersController::class, 'show']);
 });

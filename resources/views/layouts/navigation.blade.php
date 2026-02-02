@@ -10,8 +10,9 @@
             <div class="accordion">
             <!-- クリック部分 -->
                 <div class="accordion-btn">
-                    <p>{{ Auth::user()->username }} さん</p>
-                    <span class="arrow">▼</span>
+                    <p class="header-username">{{ Auth::user()->username }} さん</p>
+                    <span class="chevron"></span>
+                    <img class="header-icon" src="{{ asset('images/icon' . Auth::user()->icon . '.png') }}" alt="ユーザーアイコン">
                 </div>
             <!-- 開閉メニュー -->
                 <ul class="accordion-menu">
@@ -19,7 +20,7 @@
                     <li><a href="{{ route('profile') }}">プロフィール</a></li>
                     <li><form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" style="background:none;border:none;cursor:pointer;">
+                        <button type="submit">
                         ログアウト
                         </button>
                         </form></li>
@@ -37,7 +38,7 @@
 
                 btn.addEventListener('click', function () {
                 menu.classList.toggle('open');
-                arrow.classList.toggle('rotate');
+                btn.classList.toggle('active');
                 });
             });
         </script>

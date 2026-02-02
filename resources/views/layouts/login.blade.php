@@ -31,7 +31,7 @@
 
   <div id="row">
     <div id="container">
-      {{ $slot }}
+      @yield('content')
     </div>
 
     @include('layouts.sidebar')
