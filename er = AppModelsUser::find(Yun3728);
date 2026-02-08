@@ -1,0 +1,38 @@
+[90m= [39m[34;4mIlluminate\Database\Eloquent\Collection[39;24m {#5885
+    [34mall[39m: [
+      [34;4mApp\Models\User[39;24m {#5887
+        [34mid[39m: [35m1[39m,
+        [34musername[39m: "[32mYun3728[39m",
+        [34memail[39m: "[32myunx3728@gmail.com[39m",
+        [34micon[39m: [35m1[39m,
+        #[33mpassword[39m: "[32m$2y$10$lidrSvhZqEFQDzFoOuricO69k5PPXwBE/zrAxPUHyvhO2mBtcYAxu[39m",
+        [34mbio[39m: [36mnull[39m,
+        [34micon_image[39m: "[32micon1.png[39m",
+        [34mcreated_at[39m: "[32m2026-01-19 13:52:45[39m",
+        [34mupdated_at[39m: "[32m2026-01-19 13:52:45[39m",
+      },
+      [34;4mApp\Models\User[39;24m {#5888
+        [34mid[39m: [35m2[39m,
+        [34musername[39m: "[32mちいかわ[39m",
+        [34memail[39m: "[32mchiikawa@gmail.com[39m",
+        [34micon[39m: [35m1[39m,
+        #[33mpassword[39m: "[32m$2y$10$2EGJEhBfI7frUIRlVxWA7OBobHgO5/imMSZIoanVbWYzoMkbjmbd.[39m",
+        [34mbio[39m: [36mnull[39m,
+        [34micon_image[39m: "[32micon1.png[39m",
+        [34mcreated_at[39m: "[32m2026-01-26 15:06:29[39m",
+        [34mupdated_at[39m: "[32m2026-01-26 15:06:29[39m",
+      },
+      [34;4mApp\Models\User[39;24m {#5889
+        [34mid[39m: [35m3[39m,
+        [34musername[39m: "[32mももんが[39m",
+        [34memail[39m: "[32mmomonga@gmail.com[39m",
+        [34micon[39m: [35m1[39m,
+        #[33mpassword[39m: "[32m$2y$10$zjlU1yWpx.CPPNf/k2X4kO5fMtV.mlqstq8Ty7KUfJ37H7hu9V1Ny[39m",
+        [34mbio[39m: [36mnull[39m,
+        [34micon_image[39m: "[32micon1.png[39m",
+        [34mcreated_at[39m: "[32m2026-01-26 15:48:29[39m",
+        [34mupdated_at[39m: "[32m2026-01-26 15:48:29[39m",
+      },
+    ],
+  }
+

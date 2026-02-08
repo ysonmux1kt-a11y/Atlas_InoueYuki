@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended('top');
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     public function destroy(Request $request)

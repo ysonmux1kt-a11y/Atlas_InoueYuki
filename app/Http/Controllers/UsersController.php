@@ -41,4 +41,9 @@ class UsersController extends Controller
         Auth::user()->follows()->detach($user->id);
             return back();
     }
+
+    public function show($id){
+        $user = \App\Models\User::findOrFail($id);
+        return view('profiles.profile',compact('user'));
+    }
 }
