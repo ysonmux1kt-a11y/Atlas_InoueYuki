@@ -6,6 +6,7 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\FollowsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,16 +58,24 @@ Route::middleware('auth')->group(function () {
         ->name('user.search');
 
     // フォロー / フォロワー一覧
-    Route::get('/follow-list', [PostsController::class, 'index'])
-        ->name('follow-list');
-    Route::get('/follower-list', [PostsController::class, 'index'])
-        ->name('follower-list');
+    // Route::get('/follow-list', [PostsController::class, 'index'])
+    //     ->name('follow-list');
+    // Route::get('/follower-list', [PostsController::class, 'index'])
+    //     ->name('follower-list');
 
     // フォロー・アンフォロー
     Route::post('follow/{user}',[UsersController::class,'follow'])
         ->name('follow');
     Route::post('unfollow/{user}',[UsersController::class,'unfollow'])
         ->name('unfollow');
+
+    // フォローリスト
+        Route::get('/follow-list', [FollowsController::class, 'followList'])
+        ->name('follow-list');
+
+    // フォロワーリスト
+        Route::get('/follower-list', [FollowsController::class, 'followerList'])
+        ->name('follower-list');
 
     // 他ユーザーのプロフィール
     Route::get('/user/{id}', [UsersController::class, 'show']);

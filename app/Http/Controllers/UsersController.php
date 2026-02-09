@@ -44,6 +44,13 @@ class UsersController extends Controller
 
     public function show($id){
         $user = \App\Models\User::findOrFail($id);
-        return view('profiles.profile',compact('user'));
+
+        // 自分がこの$userをフォローしているか？
+        $isFollowing = auth()->user()
+            ->follows()
+            ->where('followed_id', $user->id)
+            ->exists();
+
+        return view('profiles.profile', compact('user', 'isFollowing'));
     }
 }

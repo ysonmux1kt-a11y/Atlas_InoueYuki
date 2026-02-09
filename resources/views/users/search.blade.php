@@ -30,6 +30,8 @@
 
   </form>
 
+  <div class="search-underline"></div>
+
   {{-- 一覧表示 --}}
   <div class="user-list">
     @forelse($users as $user)

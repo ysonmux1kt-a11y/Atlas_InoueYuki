@@ -798,3 +798,83 @@ header {
     font-size: 12px;
     white-space: nowrap;
 }
+
+.profile-wrapper {
+    max-width: 700px;
+    margin-left: 40px;
+}
+
+.profile-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.profile-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.profile-text {
+    text-align: left;
+}
+
+.profile-text .label {
+    display: inline-block;
+    width: 100px;
+}
+
+.profile-text p,
+.profile-text span {
+    color: #333;
+}
+
+.profile-wrapper,
+.profile-header,
+.profile-left,
+.profile-text {
+    text-align: left;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    /* 左右に分ける */
+    align-items: center;
+}
+
+.profile-info {
+    display: flex;
+}
+
+/* .profile-action {
+    margin-left: auto;
+} */
+
+.follow-btn {
+    background: #e53935;
+    color: #fff;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* フォロー（青） */
+.follow-add {
+    background-color: #1e88e5;
+}
+
+/* フォロー解除（赤） */
+.follow-remove {
+    background-color: #e53935;
+}
+
+.follow-add:hover {
+    background-color: #1565c0;
+}
+
+.follow-remove:hover {
+    background-color: #c62828;
+}

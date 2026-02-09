@@ -33,7 +33,20 @@ class FollowsController extends Controller
 
     public function followerList()
     {
-        return view('follows.followerList');
+    $userId = Auth::id();
+
+    $followingUserIds = Follow::where('followed_id', $userId)
+                             ->pluck('following_id')
+                             ->toArray();
+
+    $followingUsers = User::whereIn('id', $followingUserIds)->get();
+
+    $posts = Post::whereIn('user_id',$followingUserIds)
+        ->with('user')
+        ->latest()
+        ->get();
+
+        return view('follows.followerList', compact('followingUsers', 'posts'));
     }
 
     // 古い処理（残しておいてもOK）
