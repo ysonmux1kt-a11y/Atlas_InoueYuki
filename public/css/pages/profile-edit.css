@@ -1,0 +1,160 @@
+/* ==========================
+   プロフィール編集ページ
+========================== */
+
+.profile-edit-page {
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.profile-edit-wrapper {
+  max-width: 800px;
+  margin: 40px auto;
+}
+
+/* 編集エリア：左にアイコン、右にフォーム */
+.edit-area {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* 左：アイコン */
+.edit-icon {
+  flex: 0 0 56px;
+  display: flex;
+  justify-content: center;
+}
+
+.edit-icon .profile-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 右：フォーム */
+.edit-form {
+  flex: 1;
+}
+
+/* フォーム行 */
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  width: 160px;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 14px;
+  background: #f0f0f0;
+  border: 1px solid #bbb;
+  /* border-radius: 4px; */
+}
+
+.form-group textarea {
+  resize: none;
+}
+
+/* 送信ボタン */
+.form-submit {
+  padding-left: 160px;
+}
+
+.update-btn {
+  width: 140px;
+  height: 38px;
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.update-btn:hover {
+  background: #c62828;
+}
+
+/* 上段：検索フォーム + 検索ワード */
+.user-search .search-top {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 24px;
+  padding: 24px 0 16px;
+}
+
+/* 検索ワード：中央寄り */
+.user-search .search-word {
+  justify-self: center;
+  padding: 10px 24px;
+  border: 1px solid #e53935;
+  background: #fff;
+  color: #333;
+  font-size: 16px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* 検索結果一覧：幅を絞って中央へ（右に寄りすぎる問題の解消） */
+.user-search .user-list {
+  max-width: 760px;
+  /* 720〜820で好み調整OK */
+  margin: 0 auto;
+}
+
+/* 1行 */
+.user-search .user-item {
+  display: flex;
+  align-items: center;
+  padding: 22px 0;
+}
+
+/* 左：アイコン+名前をまとめる（今はバラで並ぶので） */
+.user-search .user-icon {
+  margin-right: 16px;
+}
+
+.user-search .user-icon img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-search .user-right {
+  margin-left: auto;
+}
+
+/* 検索上段：横並び */
+.user-search .search-top {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 24px 0 16px;
+}
+
+/* 左：検索窓 */
+.user-search .search-left {
+  flex-shrink: 0;
+}
+
+/* 検索結果文言（中央寄り） */
+.user-search .search-word {
+  padding: 10px 24px;
+  border: 1px solid #e53935;
+  background: #fff;
+  font-size: 16px;
+  color: #333;
+  white-space: nowrap;
+  margin: 0;
+}

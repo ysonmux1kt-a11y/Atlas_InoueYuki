@@ -51,6 +51,8 @@ class UsersController extends Controller
             ->where('followed_id', $user->id)
             ->exists();
 
-        return view('profiles.profile', compact('user', 'isFollowing'));
+        $posts = $user->posts()->latest()->get();
+
+        return view('profiles.profile', compact('user', 'isFollowing',"posts"));
     }
 }

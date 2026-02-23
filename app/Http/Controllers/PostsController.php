@@ -10,22 +10,23 @@ class PostsController extends Controller
 {
     // トップページ表示
     public function index()
-    {
-        $user =  Auth::user();
+{
+    $user = Auth::user();
 
-        $followIds = $user->follows->pluck('followed_id');
+    // フォローしているユーザー（Userモデル）の id を取得
+    $followIds = $user->follows()->pluck('users.id');
 
-        $followIds[] = $user->id;
+    // 自分のIDも含める
+    $followIds->push($user->id);
 
-        $posts = Post::with('user')
-            ->whereIn('user_id', $followIds)
-            ->orderBy('created_at','desc')
-            ->get();
+    // 自分＋フォロー中ユーザーの投稿だけ取得
+    $posts = Post::with('user')
+        ->whereIn('user_id', $followIds)
+        ->orderBy('created_at', 'desc')
+        ->get();
 
-        // $posts = Post::latest()->get(); // 全投稿を新しい順に取得
-
-        return view('posts.index',compact('posts'));
-    }
+    return view('posts.index', compact('posts'));
+}
 
     // 投稿保存
     public function store(Request $request)

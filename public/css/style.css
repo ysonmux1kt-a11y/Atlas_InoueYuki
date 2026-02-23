@@ -38,40 +38,6 @@ header {
     color: #fff;
 }
 
-.chevron {
-    position: relative;
-    width: 18px;
-    height: 12px;
-    display: inline-block;
-}
-
-/* 共通 */
-.chevron::before,
-.chevron::after {
-    content: "";
-    position: absolute;
-    top: 5px;
-    /* ←中央に合わせる */
-    width: 10px;
-    /* 少し短く */
-    height: 2px;
-    background: #fff;
-}
-
-/* 左線 */
-.chevron::before {
-    left: 50%;
-    transform: translateX(-100%) rotate(45deg);
-    transform-origin: right center;
-}
-
-/* 右線 */
-.chevron::after {
-    left: 50%;
-    transform: rotate(-45deg);
-    transform-origin: left center;
-}
-
 /* ユーザー名 */
 .header-username {
     margin: 0;
@@ -186,31 +152,24 @@ header {
 
 /* アイコン */
 .header-icon {
-    width: 40px;
-    height: 40px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     object-fit: cover;
 }
 
 
-
-/* 投稿フォーム */
-.post-form {
-    background: #fff;
-    border-bottom: 4px solid #e9e9e9;
-    border-radius: 6px;
-    padding: 16px 0;
-    margin-bottom: 20px;
-}
-
 /* フォーム全体 */
 .post-form-inner {
     display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px 0;
-    border-bottom: 4px solid #e9e9e9;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 24px;
+    border-bottom: 6px solid #e9e9e9;
+    /* padding-right: 24px; */
 }
+
+
 
 /* ユーザーアイコン */
 .post-user-icon img {
@@ -218,28 +177,41 @@ header {
     height: 56px;
     border-radius: 50%;
     display: block;
+    margin-left: 60px;
 }
 
 /* 入力エリア */
 .post-input-area {
     flex: 1;
     display: flex;
+    position: relative;
     align-items: center;
     gap: 16px;
+    padding-top: 8px;
 }
 
 .post-input-area textarea {
-    flex: 1;
-    height: 56px;
+    /* flex: 1; */
+    width: 100%;
+    min-height: 80px;
+    /* height: 56px; */
     resize: none;
-    padding: 12px;
+    padding: 12px 60px 12px 12px;
     border: none;
     outline: none;
     background: transparent;
+    box-sizing: border-box;
+}
+
+.post-input-area textarea::placeholder {
+    color: #b5b5b5;
 }
 
 /* 投稿ボタン（紙飛行機） */
 .post-submit-button {
+    position: absolute;
+    right: 15px;
+    bottom: 5px;
     width: 36px;
     height: 36px;
     padding: 0;
@@ -264,111 +236,7 @@ header {
     border: 0;
 }
 
-/* ===== 投稿一覧（ここだけで整える） ===== */
-.post-item {
-    display: flex;
-    gap: 14px;
-    padding: 18px 0;
-    border-bottom: 1px solid #ddd;
-}
 
-.post-user img {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    display: block;
-}
-
-.post-body {
-    flex: 1;
-    min-width: 0;
-}
-
-/* 1行目：左=ユーザー名 / 右=日時+アイコン */
-.post-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-}
-
-.user-name {
-    margin: 0;
-}
-
-.post-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 5px;
-}
-
-.top-date {
-    font-size: 12px;
-    color: #666;
-    text-align: right;
-}
-
-.post-actions {
-    display: flex;
-    gap: 8px;
-}
-
-/* アイコンサイズ */
-.post-actions img {
-    width: 40px;
-    height: 40px;
-    display: block;
-}
-
-/* 削除ボタンの余計な枠消し */
-.delete-form {
-    margin: 0;
-}
-
-.delete-button {
-    border: none;
-    background: transparent;
-    padding: 0;
-    cursor: pointer;
-}
-
-/* ボタン余計な枠を消す */
-.delete-form {
-    margin: 0;
-}
-
-.delete-button {
-    border: none;
-    background: transparent;
-    padding: 0;
-    cursor: pointer;
-}
-
-
-/* 本文 */
-.post-text {
-    margin: 8px 0 0;
-    white-space: pre-wrap;
-    word-break: break-word;
-}
-
-#row {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: nowrap;
-    /* 折り返し禁止 */
-    gap: 24px;
-    padding: 24px;
-    align-items: flex-start;
-}
-
-/* 左 */
-#container {
-    flex: 1;
-    min-width: 0;
-}
 
 
 /* ===== ヘッダー全体 ===== */
@@ -390,30 +258,6 @@ header {
     display: block;
 }
 
-
-/* ===== 編集モーダル / 削除モーダル 共通 ===== */
-.edit-modal,
-.delete-modal {
-    position: fixed;
-    inset: 0;
-    /* top/right/bottom/left:0 と同じ */
-    background: rgba(0, 0, 0, 0.4);
-    display: none;
-    /* JSで block にされたら見える */
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-}
-
-/* 中身の白い箱 */
-.edit-modal-content,
-.delete-modal-content {
-    background: #fff;
-    width: min(680px, 90vw);
-    padding: 24px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
 
 /* テキストエリア */
 .edit-modal-content textarea {
@@ -452,66 +296,6 @@ header {
     opacity: 0.85;
 }
 
-/* ===== 削除モーダル（暗くしない） ===== */
-.delete-modal {
-    position: fixed;
-    inset: 0;
-    display: none;
-    align-items: flex-start;
-    /* 上寄せ */
-    justify-content: center;
-    /* 横中央 */
-    padding-top: 80px;
-    /* 上の余白（見本っぽく） */
-    background: transparent;
-    /* ←暗くしない */
-    z-index: 9999;
-}
-
-.delete-modal-content {
-    background: #fff;
-    width: min(520px, 90vw);
-    padding: 22px 24px;
-    border-radius: 0;
-    border: 1px solid #999;
-}
-
-.delete-modal-content h3 {
-    margin: 0 0 16px;
-    font-size: 16px;
-    font-weight: normal;
-    color: #333;
-}
-
-/* ボタン並び */
-#delete-form {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-}
-
-#cancel-delete,
-#confirm-delete {
-    font-size: 14px;
-    padding: 6px 12px;
-    border: 1px solid #999;
-    background: #fff;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-/* 削除ボタンだけ少し目立たせる（任意） */
-#confirm-delete {
-    background: #f2f2f2;
-    border: 1px solid #999;
-}
-
-#confirm-delete:hover {
-    background: #4f6ecb;
-    color: #fff;
-    border: 1px solid #4f6ecb;
-}
-
 /* =========================
    サイドバー
 ========================= */
@@ -523,12 +307,14 @@ header {
     /* 固定幅 */
     border-left: 1px solid #727272;
     /* 投稿との縦線 */
-    padding: 0 16px;
-    /* 左右余白 */
     display: flex;
     flex-direction: column;
     gap: 18px;
+    padding: 24px 16px 0 16px;
+    align-self: stretch;
 }
+
+
 
 /* 上部（◯◯さんの） */
 #confirm {
@@ -540,7 +326,6 @@ header {
 /* ユーザー名 */
 #confirm>p:first-child {
     margin: 0 0 16px;
-    font-weight: bold;
     color: #333;
 }
 
@@ -573,15 +358,15 @@ header {
 
 #confirm .btn {
     margin: 8px 0 18px;
-    padding: 0;
+    /* padding: 0; */
     display: flex;
     justify-content: flex-end;
+    padding-right: 12px;
 }
 
 #confirm .btn a {
     display: inline-block;
     width: 140px;
-    /* 見本寄せ幅 */
     padding: 10px 0;
     background-color: #1f6fbf;
     color: #fff;
@@ -598,8 +383,8 @@ header {
 #side-bar>.btn {
     border-top: 1px solid #ddd;
     /* 区切り線 */
-    margin-top: 18px;
-    padding-top: 18px;
+    margin: 18px -16px 0 -16px;
+    padding: 18px 16px 0 16px;
     text-align: center;
 }
 
@@ -653,11 +438,6 @@ header {
     object-fit: contain;
 }
 
-.search-underline {
-    height: 6px;
-    background: #d9d9d9;
-    margin: 40px 0 0 0;
-}
 
 .user-item {
     display: flex;
@@ -678,12 +458,6 @@ header {
     border-radius: 50%;
     display: block;
 }
-
-/* .user-left {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-} */
 
 .user-name {
     margin-left: 10px;
@@ -724,12 +498,21 @@ header {
 }
 
 .user-search {
-    padding: 20px 0 10px 40px;
+    margin: 36px 0 32px 40px;
 }
 
 .user-list {
     max-width: 600px;
     margin: 0 auto;
+}
+
+/* フォローリスト */
+
+.follow-header {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin: 24px 0 24px 40px;
 }
 
 
@@ -754,103 +537,6 @@ header {
     transform: scale(1.1);
 }
 
-/* 投稿カード全体：横並びにする */
-.post-card {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    border-bottom: 1px solid #ccc;
-    padding: 15px 10px;
-    width: 100%;
-    gap: 15px;
-    position: relative;
-}
-
-/* 左側：アイコン */
-.post-left {
-    flex-shrink: 0;
-}
-
-/* 中央：本文 */
-.post-body {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-/* ユーザー名 */
-.post-user {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-/* 本文 */
-.post-content {
-    white-space: pre-wrap;
-}
-
-/* 日時：右下に絶対配置 */
-.post-date {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: #888;
-    font-size: 12px;
-    white-space: nowrap;
-}
-
-.profile-wrapper {
-    max-width: 700px;
-    margin-left: 40px;
-}
-
-.profile-left {
-    display: flex;
-    align-items: flex-start;
-    gap: 30px;
-}
-
-.profile-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-}
-
-.profile-text {
-    text-align: left;
-}
-
-.profile-text .label {
-    display: inline-block;
-    width: 100px;
-}
-
-.profile-text p,
-.profile-text span {
-    color: #333;
-}
-
-.profile-wrapper,
-.profile-header,
-.profile-left,
-.profile-text {
-    text-align: left;
-}
-
-.profile-header {
-    display: flex;
-    justify-content: space-between;
-    /* 左右に分ける */
-    align-items: center;
-}
-
-.profile-info {
-    display: flex;
-}
-
-/* .profile-action {
-    margin-left: auto;
-} */
 
 .follow-btn {
     background: #e53935;
@@ -877,4 +563,231 @@ header {
 
 .follow-remove:hover {
     background-color: #c62828;
+}
+
+
+
+.profile-edit-wrapper {
+    width: 600px;
+    margin: 40px auto;
+}
+
+.form-row {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== 編集ページ ===== */
+
+.edit-title {
+    font-size: 28px;
+    margin-bottom: 40px;
+}
+
+.edit-area {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
+
+.edit-icon {
+    width: 120px;
+}
+
+.edit-form {
+    flex: 1;
+    max-width: 700px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    width: 160px;
+    font-size: 16px;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    flex: 1;
+    height: 42px;
+    background: #e6e6e6;
+    border: 1px solid #bbb;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    /* height: 80px; */
+    resize: none;
+}
+
+.file-group input {
+    height: 120px;
+    padding: 20px;
+}
+
+.file-group input[type="file"]::-webkit-file-upload-button {
+    height: 40px;
+    background: #f5f5f5;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.form-submit {
+    margin-top: 40px;
+    padding-left: 160px;
+    /* 入力欄開始位置に合わせる */
+}
+
+.update-btn {
+    background: #e53935;
+    color: #fff;
+    border: none;
+    width: 150px;
+    height: 38px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+
+    /* ボタンの中心を揃える */
+    margin-left: -75px;
+    /* ボタン幅150pxの半分 */
+}
+
+.update-btn:hover {
+    background: #c62828;
+}
+
+.error {
+    margin-left: 160px;
+    color: red;
+    font-size: 13px;
+}
+
+.success {
+    color: green;
+    margin-bottom: 20px;
+}
+
+/* =========================
+   他ユーザーのプロフィール（user/{id}）
+   意図どおり・最小構成
+========================= */
+
+/* ① プロフィール全体の基準余白 */
+.profile-wrapper {
+    padding: 28px 0 18px;
+}
+
+/* ② ヘッド */
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 0 12px;
+}
+
+/* アイコン＋テキスト */
+.profile-left {
+    display: flex;
+    gap: 14px;
+    /* 他ページと同じ自然な間隔 */
+}
+
+/* アイコンは既存サイズを尊重 */
+.profile-left .profile-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    transform: translateX(10px);
+}
+
+/* ③ ラベルと値の開始位置を作る */
+.profile-text p {
+    margin: 0 0 12px;
+    display: flex;
+}
+
+/* ここが「揃える基準線」 */
+.profile-text .label {
+    width: 92px;
+    flex-shrink: 0;
+    color: #555;
+}
+
+.profile-text .value {
+    color: #333;
+}
+
+/* フォローボタンが右に詰まりすぎないように */
+.profile-action {
+    padding-right: 12px;
+}
+
+/* ④ 区切り線：余白なし */
+/* プロフィール専用の区切り線 */
+.profile-wrapper .section-divider {
+    height: 6px;
+    background: #e5e5e5;
+    margin: 0 -24px;
+    width: calc(100% + 48px);
+}
+
+/* ⑤ 投稿一覧 */
+.profile-posts {
+    margin: 0;
+}
+
+/*
+  投稿構造は壊さない
+  「文字の開始位置」だけ揃える
+*/
+.profile-posts .post-item {
+    padding: 12px 0;
+}
+
+/* 投稿本文の開始位置を label の右端に合わせる */
+.profile-posts .post-body {
+    padding-left: 0;
+}
+
+/* アイコンは他ページの挙動を尊重 */
+.profile-posts .post-user img {
+    margin: 0;
+}
+
+.profile-posts .post-user-name,
+.profile-posts .post-text {
+    margin: 0;
+}
+
+/* メインカラムとサイドバーの役割を分離する */
+#row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+#container {
+    flex: 1;
+    /* メインは残り幅 */
+    min-width: 0;
+}
+
+/* サイドバーの謎の背景ボックス対策 */
+#side-bar p.btn {
+    background: transparent;
+    box-shadow: none;
+}
+
+/* クリック時・hover時も背景を出さない */
+#side-bar p.btn:hover,
+#side-bar p.btn:active {
+    background: transparent;
 }

@@ -79,4 +79,12 @@ Route::middleware('auth')->group(function () {
 
     // 他ユーザーのプロフィール
     Route::get('/user/{id}', [UsersController::class, 'show']);
+
+    // プロフィール編集
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])
+        ->name('profile.edit');
+
+    // プロフィール更新
+    Route::post('/profile/update', [ProfileController::class, 'update'])
+        ->name('profile.update');
 });

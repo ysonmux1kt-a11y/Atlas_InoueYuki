@@ -1,0 +1,159 @@
+/* ==========================
+   他ユーザー プロフィールページ
+========================== */
+
+.user-profile-page {
+  padding: 0 24px 24px;
+  /* ← 左右余白を他ページと統一 */
+  box-sizing: border-box;
+}
+
+/* ==========================
+   プロフィール上部
+========================== */
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* 縦中央 */
+  min-height: 120px;
+  /* 青帯下〜太線の高さを担保 */
+}
+
+/* 左（アイコン＋テキスト） */
+.profile-left {
+  display: flex;
+  align-items: center;
+  /* 縦中央 */
+  gap: 16px;
+}
+
+/* ヘッダーアイコン */
+.profile-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ラベル＋値 */
+.profile-text p {
+  display: flex;
+  align-items: center;
+  margin: 4px 0;
+}
+
+.profile-text .label {
+  min-width: 140px;
+  font-size: 16px;
+  color: #888;
+}
+
+.profile-text .value {
+  font-size: 16px;
+  color: #333;
+}
+
+/* フォローボタン */
+.profile-action .follow-btn {
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.follow-add {
+  background-color: #1e88e5;
+  color: #fff;
+}
+
+.follow-remove {
+  background-color: #e53935;
+  color: #fff;
+}
+
+/* ==========================
+   区切り線
+========================== */
+
+.user-profile-page .profile-divider {
+  height: 8px;
+  background-color: #e5e5e5;
+  margin: 0 -24px 16px;
+}
+
+/* =========================
+   他ユーザー プロフィール：投稿一覧（正解）
+========================= */
+
+.user-profile-page .post-item {
+  position: relative;
+  padding: 16px 0;
+}
+
+.user-profile-page .post-item::after {
+  content: "";
+  position: absolute;
+  left: -24px;
+  right: -24px;
+  bottom: 0;
+  height: 1px;
+  background: #e5e5e5;
+}
+
+.user-profile-page .post-inner {
+  display: flex;
+  align-items: flex-start;
+  padding-left: 80px;
+  /* ← ヘッダー基準 */
+}
+
+.user-profile-page .post-user {
+  width: 56px;
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.user-profile-page .post-user img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-profile-page .post-body {
+  flex: 1;
+  min-width: 0;
+  padding-left: 8px;
+}
+
+.user-profile-page .post-head {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile-page .post-user-name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.user-profile-page .top-date {
+  margin-left: auto;
+  padding-right: 16px;
+  font-size: 12px;
+  color: #999;
+}
+
+.user-profile-page .post-content {
+  margin-top: 4px;
+}
+
+.user-profile-page .post-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}

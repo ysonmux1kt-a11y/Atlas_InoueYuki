@@ -1,5 +1,9 @@
 @extends('layouts.login') {{-- 例：ログイン後レイアウト --}}
 
+@section('page_css')
+<link rel="stylesheet" href="{{ asset('css/pages/user-search.css') }}">
+@endsection
+
 @section('content')
 
 @php
@@ -9,28 +13,28 @@
 
 <div class="user-search">
 
-  <form action="{{ route('user.search') }}" method="GET" class="user-search-form">
-    <input
-      type="text"
-      name="keyword"
-      value="{{ request('keyword') }}"
-      class="user-search-input"
-      placeholder="ユーザー名"
-    >
-
-    <button type="submit" class="user-search-btn" aria-label="検索">
-      <img src="{{ asset('images/search.png') }}" alt="検索">
-    </button>
+  <div class="search-top">
+    <form action="{{ route('user.search') }}" method="GET" class="user-search-form">
+      <div class="search-controls">
+        <input
+          type="text"
+          name="keyword"
+          value="{{ request('keyword') }}"
+          class="user-search-input"
+          placeholder="ユーザー名"
+        >
+        <button type="submit" class="user-search-btn" aria-label="検索">
+          <img src="{{ asset('images/search.png') }}" alt="検索">
+        </button>
+      </div>
+    </form>
 
     @if(!empty($keyword))
-        <p class="search-word">
-            「{{ $keyword }}」の検索結果
-        </p>
+      <p class="search-word">検索ワード：{{ $keyword }}</p>
     @endif
+  </div>
 
-  </form>
-
-  <div class="search-underline"></div>
+  <div class="section-divider"></div>
 
   {{-- 一覧表示 --}}
   <div class="user-list">
@@ -39,7 +43,8 @@
 
       {{-- 左：アイコン＋ユーザー名 --}}
         <div class="user-icon">
-          <img src="{{ asset('images/icon' . $user->icon . '.png') }}" alt="ユーザーアイコン">
+          <img src="{{ $user->icon_image ? asset('storage/' . $user->icon_image) : asset('images/icon' . $user->icon . '.png') }}"
+          alt="ユーザーアイコン">
         </div>
 
         <div class="user-name">

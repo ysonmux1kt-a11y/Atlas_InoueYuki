@@ -1,0 +1,142 @@
+/* =========================
+   ユーザー検索ページ
+========================= */
+
+.user-search {
+  /* サイドバー幅（区切り線を左端ぴったりに伸ばす用） */
+  --sidebar-w: 280px;
+
+  /* 検索欄の最大幅 */
+  --search-input-max: 400px;
+}
+
+/* =========================
+   検索エリア
+========================= */
+
+/* フォーム全体（検索窓＋検索結果表示） */
+.user-search .user-search-form {
+  display: flex;
+  align-items: center;
+  height: 96px;
+  flex-wrap: nowrap;
+}
+
+
+/* 左：検索窓＋ボタン */
+.user-search .search-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* 検索窓 */
+.user-search .user-search-input {
+  flex: 1.5;
+  /* 1.5倍の感覚 */
+  max-width: var(--search-input-max);
+}
+
+/* 右：検索結果表示（「◯◯の検索結果」） */
+.user-search .search-word {
+  margin-left: 16px;
+  /* 検索窓の右に余白 */
+  margin: 0 0 0 16px;
+  /* 重複定義の整理（上書きされないように統一） */
+  padding: 0;
+  border: none;
+  /* 赤枠の原因がここなら消える */
+  background: none;
+  font-size: 14px;
+  color: #333;
+  white-space: nowrap;
+}
+
+/* =========================
+   区切り線（左端ぴったり）
+========================= */
+
+.user-search .section-divider {
+  height: 8px;
+  background-color: #e5e5e5;
+
+  margin: 24px 0;
+
+  /* 左側にサイドバー分だけ伸ばす */
+  margin-left: calc(-1 * var(--sidebar-w));
+  width: calc(100% + var(--sidebar-w));
+}
+
+/* =========================
+   ユーザー一覧
+========================= */
+
+.user-search .user-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 0;
+}
+
+/* アイコン */
+.user-search .user-icon {
+  margin-right: 16px;
+}
+
+.user-search .user-icon img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  display: block;
+}
+
+/* 右側（ボタン） */
+.user-search .user-right {
+  margin-left: auto;
+}
+
+/* =========================
+   フォローボタン
+========================= */
+
+.user-search .btn-follow,
+.user-search .btn-unfollow {
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.user-search .btn-follow {
+  background-color: #4fa3ff;
+}
+
+.user-search .btn-unfollow {
+  background-color: #ff4f4f;
+}
+
+.user-search .search-top {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  /* 余白はここで調整 */
+}
+
+/* 入力欄を広げたい（flex方式） */
+.user-search .search-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-search .user-search-input {
+  flex: 3;
+  min-width: 360px;
+  max-width: 520px;
+}
+
+.user-search .search-word {
+  margin: 0;
+  white-space: nowrap;
+}

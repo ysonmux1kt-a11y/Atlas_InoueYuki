@@ -1,6 +1,12 @@
 @extends('layouts.login')
 
+@section('page_css')
+  <link rel="stylesheet" href="{{ asset('css/pages/top-post.css') }}">
+@endsection
+
 @section('content')
+
+<div class="page-top">
 
 <!-- 投稿フォーム -->
 <div class="post form">
@@ -10,8 +16,7 @@
     <div class="post-form-inner">
       <!-- ユーザーアイコン -->
       <div class="post-user-icon">
-        <img src="{{ asset('images/icon' . Auth::user()->icon . '.png') }}"
-        alt="ユーザーアイコン">
+        <img src="{{ Auth::user()->icon_image ? asset('storage/' . Auth::user()->icon_image) : asset('images/icon' . Auth::user()->icon . '.png') }}" alt="ユーザーアイコン">
       </div>
 
       <!-- 投稿入力エリア -->
@@ -30,63 +35,73 @@
 <div class="post-list">
   @foreach($posts as $post)
     <div class="post-item">
+      <div class="post-inner">
+
       <!-- 左：アイコン -->
       <div class="post-user">
-        <img src="{{ asset('images/icon' . $post->user->icon . '.png') }}" alt="アイコン">
+        <img src="{{ $post->user->icon_image ? asset('storage/' . $post->user->icon_image) : asset('images/icon' . $post->user->icon . '.png') }}"
+        alt="アイコン">
       </div>
 
       <!-- 右：本文ブロック -->
       <div class="post-body">
-        <!-- 上部：ユーザー名 + 投稿日時・操作ボタン -->
+
+        <!-- 上段：ユーザー名 + 日時 -->
         <div class="post-head">
-          <p class="user-name">{{ $post->user->username }}</p>
-
-          <div class="post-right">
-            <div class="top-date">{{ $post->created_at->format('Y/m/d H:i') }}</div>
-
-            @if($post->user_id === Auth::id())
-              <div class="post-actions">
-                <a href="#" class="edit-button" data-post-id="{{ $post->id }}">
-                  <img src="{{ asset('images/edit.png') }}" alt="編集">
-                </a>
-
-                <form action="{{ route('posts.destroy', $post->id) }}" method="post" class="delete-form">
-                  @csrf
-                  @method('DELETE')
-                  <button type="button" class="delete-button" data-post-id="{{ $post->id }}">
-                    <img src="{{ asset('images/trash.png') }}" data-hover="{{ asset('images/trash-h.png') }}" alt="削除">
-                  </button>
-                </form>
-              </div>
-            @endif
+          <p class="post-user-name">{{ $post->user->username }}</p>
+          <div class="top-date">
+            {{ $post->created_at->format('Y/m/d H:i') }}
           </div>
         </div>
 
-        <!-- 投稿本文 -->
-        <p class="post-text">{{ $post->content }}</p>
+        <!-- 本文 -->
+        <div class="post-content">
+          <p class="post-text">{{ $post->content }}</p>
+        </div>
 
-        <!-- 編集モーダル -->
+        <!-- ボタン -->
         @if($post->user_id === Auth::id())
-          <div class="edit-modal" id="edit-modal-{{ $post->id }}" style="display:none;">
-            <div class="edit-modal-content">
-              <form action="{{ route('posts.update', $post) }}" method="post" class="edit-form">
-                @csrf
-                <textarea name="content" rows="4">{{ $post->content }}</textarea>
+          <div class="post-actions">
+            <a href="#" class="edit-button" data-post-id="{{ $post->id }}">
+              <img src="{{ asset('images/edit.png') }}" alt="編集">
+            </a>
 
-                <div class="edit-modal-buttons">
-                  <button type="button" class="close-modal">キャンセル</button>
-                  <button type="submit" class="update-button" aria-label="更新">
-                    <img src="{{ asset('images/edit.png') }}" alt="更新">
-                  </button>
-                </div>
-              </form>
-            </div>
+            <form action="{{ route('posts.destroy', $post->id) }}" method="post" class="delete-form">
+              @csrf
+              @method('DELETE')
+              <button type="button" class="delete-button" data-post-id="{{ $post->id }}">
+                <img src="{{ asset('images/trash.png') }}" alt="削除">
+              </button>
+            </form>
           </div>
         @endif
+
+      </div> <!-- post-body -->
+
+      <!-- 編集モーダル（post-item内に入れる） -->
+      @if($post->user_id === Auth::id())
+        <div class="edit-modal" id="edit-modal-{{ $post->id }}" style="display:none;">
+          <div class="edit-modal-content">
+            <form action="{{ route('posts.update', $post) }}" method="post" class="edit-form">
+              @csrf
+              <textarea name="content" rows="4">{{ $post->content }}</textarea>
+
+              <div class="edit-modal-buttons">
+                <button type="button" class="close-modal">キャンセル</button>
+                <button type="submit" class="update-button">
+                  <img src="{{ asset('images/edit.png') }}" alt="更新">
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      @endif
+
       </div>
-    </div>
+    </div> <!-- post-item -->
   @endforeach
 </div>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -146,4 +161,5 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   </script>
+  </div> <!-- page-top -->
 @endsection

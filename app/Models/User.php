@@ -21,6 +21,8 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'bio',
+        'icon_image',
     ];
 
     /**
@@ -49,5 +51,9 @@ class User extends Authenticatable
             'followed_id',
             'following_id'
         );
+    }
+
+    public function posts(){
+        return $this->hasMany(\App\Models\Post::class);
     }
 }

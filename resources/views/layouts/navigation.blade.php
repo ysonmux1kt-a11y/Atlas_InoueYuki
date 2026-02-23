@@ -12,12 +12,14 @@
                 <div class="accordion-btn">
                     <p class="header-username">{{ Auth::user()->username }} さん</p>
                     <span class="chevron"></span>
-                    <img class="header-icon" src="{{ asset('images/icon' . Auth::user()->icon . '.png') }}" alt="ユーザーアイコン">
+                    <img class="header-icon"
+                    src="{{ Auth::user()->icon_image ? asset('storage/' . Auth::user()->icon_image) : asset('images/icon' . Auth::user()->icon . '.png') }}"
+                    alt="ユーザーアイコン">
                 </div>
             <!-- 開閉メニュー -->
                 <ul class="accordion-menu">
                     <li><a href="{{ route('top') }}">ホーム</a></li>
-                    <li><a href="{{ route('profile') }}">プロフィール</a></li>
+                    <li><a href="{{ route('profile.edit') }}">プロフィール</a></li>
                     <li><form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit">
