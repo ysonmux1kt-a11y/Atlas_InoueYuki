@@ -63,7 +63,7 @@
 }
 
 /* ==========================
-  投稿一覧（正解ルート① 完成）
+  投稿一覧
 ========================== */
 
 .page-top .post-list {
@@ -204,4 +204,142 @@
 .edit-button:hover img,
 .delete-button:hover img {
   filter: brightness(0) invert(1);
+}
+
+
+/* =========================
+   TOP PAGE MODALS
+========================= */
+
+/* ===== 編集モーダル ===== */
+.edit-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.edit-modal.is-active {
+  display: flex;
+}
+
+/* モーダル本体 */
+.edit-modal-content {
+  background: #fff;
+  width: 800px;
+  max-width: 90vw;
+  padding: 32px 40px;
+  border-radius: 12px;
+}
+
+/* textarea */
+.edit-modal-content textarea {
+  width: 100%;
+  height: 160px;
+  resize: none;
+  padding: 16px;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+/* ボタン行（中央寄せの本体） */
+.edit-modal-buttons {
+  margin-top: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ボタン */
+.edit-modal-buttons button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* アイコンサイズ（最終決定） */
+.edit-modal-buttons button img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+/* キャンセル非表示 */
+.edit-modal-buttons .close-modal {
+  display: none;
+}
+
+/* ===== 削除モーダル ===== */
+.delete-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 0;
+  /* 画面最上部 */
+  background: transparent;
+  z-index: 9999;
+}
+
+/* 削除モーダル本体 */
+.delete-modal-content {
+  background: #fff;
+  width: auto;
+  /* 中身基準 */
+  min-width: 420px;
+  padding: 26px 28px;
+  border: 1px solid #999;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* 削除メッセージ */
+.delete-modal-content h3 {
+  margin: 0 0 20px;
+  font-size: 16px;
+  font-weight: normal;
+  color: #333;
+  text-align: left;
+  line-height: 1.5;
+}
+
+/* ボタン行 */
+#delete-form {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* ボタン共通 */
+#confirm-delete,
+#cancel-delete {
+  min-width: 90px;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* キャンセル：外枠を太く */
+#cancel-delete {
+  border: 2px solid #666;
+}
+
+/* OKボタン */
+#confirm-delete {
+  border: 1px solid #999;
+  background: #f2f2f2;
+}
+
+#confirm-delete:hover {
+  background: #4f6ecb;
+  color: #fff;
+  border-color: #4f6ecb;
 }
