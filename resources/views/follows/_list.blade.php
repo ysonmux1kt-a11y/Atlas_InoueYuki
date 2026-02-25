@@ -6,43 +6,60 @@
       <h2 class="follow-title">{{ $title }}</h2>
 
       <div class="follower-icons">
-        @foreach($users as $user)
-        <a href="{{ url('/user/' . $user->id) }}">
-          <img src="{{ $user->icon_image
-        ? asset('storage/' . $user->icon_image)
-        : asset('images/icon' . $user->icon . '.png') }}">
-        </a>
-        @endforeach
+        @forelse($users as $user)
+          <a href="{{ url('/user/' . $user->id) }}">
+            <img
+              src="{{ $user->icon_image
+                ? asset('storage/' . $user->icon_image)
+                : asset('images/icon' . $user->icon . '.png') }}"
+              alt="ユーザーアイコン"
+            >
+          </a>
+        @empty
+          <p class="no-user">該当ユーザーはいません。</p>
+        @endforelse
       </div>
     </div>
 
-    <!-- 太線は必ずメイン内 -->
+    <!-- 区切り線 -->
     <div class="section-divider"></div>
 
+    <!-- 投稿一覧 -->
     <div class="post-list">
-    @foreach($posts as $post)
-    <div class="post">
-      <div class="post-inner">
 
-        <div class="post-user-icon">
-          <img src="{{ $post->user->icon_image
-              ? asset('storage/' . $post->user->icon_image)
-              : asset('images/icon' . $post->user->icon . '.png') }}">
-        </div>
+      @forelse($posts as $post)
+        <div class="post">
+          <div class="post-inner">
 
-        <div class="post-body">
-          <div class="post-head">
-            <p class="post-user-name">{{ $post->user->username }}</p>
-            <p class="post-time">{{ $post->created_at->format('Y-m-d H:i') }}</p>
+            <div class="post-user-icon">
+              <img
+                src="{{ optional($post->user)->icon_image
+                  ? asset('storage/' . optional($post->user)->icon_image)
+                  : asset('images/icon1.png') }}"
+                alt="ユーザーアイコン"
+              >
+            </div>
+
+            <div class="post-body">
+              <div class="post-head">
+                <p class="post-user-name">
+                  {{ optional($post->user)->username ?? '不明なユーザー' }}
+                </p>
+                <p class="post-time">
+                  {{ $post->created_at->format('Y-m-d H:i') }}
+                </p>
+              </div>
+
+              <p class="post-text">{{ $post->content }}</p>
+            </div>
+
           </div>
-
-          <p class="post-text">{{ $post->content }}</p>
         </div>
+      @empty
+        <p class="no-post">表示できる投稿がありません。</p>
+      @endforelse
 
-      </div>
-    </div>
-    @endforeach
-  </div>
+    </div><!-- /.post-list -->
 
   </div><!-- /.follow-main -->
 
