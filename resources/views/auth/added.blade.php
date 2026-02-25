@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <p class="added-name">{{ $user -> username }}さん</p>
+    <p class="added-name">{{ $username }}さん</p>
     <p class="added-welcome">ようこそ！AtlasSNSへ！</p>
     <p class="added-message">ユーザー登録が完了しました。<br>早速ログインをしてみましょう。</p>
 

@@ -26,13 +26,12 @@ require __DIR__ . '/auth.php';
 | ログイン後のみアクセス可能なページ
 |--------------------------------------------------------------------------
 */
-Route::middleware('auth')->group(function () {
 
     // ユーザー登録完了画面
     Route::get('/added', [RegisteredUserController::class, 'added'])
         ->name('added');
 
-
+    Route::middleware('auth')->group(function () {
     // トップページ
     Route::get('/top', [PostsController::class, 'index'])
         ->name('top');
