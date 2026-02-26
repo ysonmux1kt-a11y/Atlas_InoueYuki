@@ -22,6 +22,7 @@ header {
 
 /* ヘッダー全体 */
 #head {
+    position: relative;
     height: 80px;
     display: flex;
     align-items: center;
@@ -86,16 +87,22 @@ header {
 
 
 .accordion {
-    position: relative;
+    position: static;
+    display: inline-block;
 }
 
 /* メニュー本体 */
 .accordion-menu {
     position: absolute;
-    top: 60px;
+    top: 100%;
     /* ヘッダー内の位置調整 */
     right: 0;
-    width: 300px;
+
+    width: 100%;
+    max-width: 280px;
+
+
+    box-sizing: border-box;
     list-style: none;
     padding: 0;
     margin: 0;

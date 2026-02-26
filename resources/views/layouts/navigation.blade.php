@@ -2,8 +2,8 @@
             <!-- ロゴ -->
             <h1>
                 <a href="{{ route('top') }}">
-                <img src="{{ asset('images/atlas.png') }}"></a>
-                <!-- <a><img src="images/atlas.png"></a> -->
+                  <img src="{{ asset('images/atlas.png') }}">
+                </a>
             </h1>
 
             <!-- アコーディオン全体 -->
