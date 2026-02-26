@@ -16,7 +16,12 @@
     <div class="post-form-inner">
       <!-- ユーザーアイコン -->
       <div class="post-user-icon">
-        <img src="{{ Auth::user()->icon_image ? asset('storage/' . Auth::user()->icon_image) : asset('images/default-icon.png') }}" alt="ユーザーアイコン">
+        <img
+         src="{{ Auth::user()->icon_image
+         ? asset('storage/' . Auth::user()->icon_image)
+         : asset('images/icon1.png') }}"
+         alt="ユーザーアイコン"
+        >
       </div>
 
       <!-- 投稿入力エリア -->
@@ -41,11 +46,10 @@
         <!-- 左：アイコン -->
         <div class="post-user">
           <img
-            src="{{ optional($post->user)->icon_image
-              ? asset('storage/' . optional($post->user)->icon_image)
-              : asset('images/default-icon.png') }}"
-            alt="ユーザーアイコン"
-          >
+           src="{{ optional($post->user)->icon_image
+           ? asset('storage/' . optional($post->user)->icon_image)
+           : asset('images/icon1.png') }}"
+           alt="ユーザーアイコン">
         </div>
 
         <!-- 右：本文 -->

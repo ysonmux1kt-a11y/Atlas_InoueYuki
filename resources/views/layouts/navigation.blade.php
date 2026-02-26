@@ -13,8 +13,10 @@
                     <p class="header-username">{{ Auth::user()->username }} さん</p>
                     <span class="chevron"></span>
                     <img class="header-icon"
-                    src="{{ Auth::user()->icon_image ? asset('storage/' . Auth::user()->icon_image) : asset('images/icon' . Auth::user()->icon . '.png') }}"
-                    alt="ユーザーアイコン">
+                     src="{{ Auth::user()->icon_image
+                     ? asset('storage/' . Auth::user()->icon_image)
+                     : asset('images/icon1.png') }}"
+                     alt="ユーザーアイコン">
                 </div>
             <!-- 開閉メニュー -->
                 <ul class="accordion-menu">

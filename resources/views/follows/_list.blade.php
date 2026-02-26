@@ -11,15 +11,14 @@
             <img
               src="{{ $user->icon_image
                 ? asset('storage/' . $user->icon_image)
-                : asset('images/icon' . $user->icon . '.png') }}"
-              alt="ユーザーアイコン"
-            >
+                : asset('images/icon1.png') }}"
+              alt="ユーザーアイコン">
           </a>
         @empty
           <p class="no-user">該当ユーザーはいません。</p>
         @endforelse
       </div>
-    </div>
+    </div><!-- /.follow-header -->
 
     <!-- 区切り線 -->
     <div class="section-divider"></div>
@@ -36,8 +35,7 @@
                 src="{{ optional($post->user)->icon_image
                   ? asset('storage/' . optional($post->user)->icon_image)
                   : asset('images/icon1.png') }}"
-                alt="ユーザーアイコン"
-              >
+                alt="ユーザーアイコン">
             </div>
 
             <div class="post-body">

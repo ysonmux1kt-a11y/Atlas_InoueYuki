@@ -20,8 +20,10 @@
 
     <div class="edit-icon">
       <img class="profile-icon"
-      src="{{ $user->icon_image ? asset('storage/' . $user->icon_image) : asset('images/icon' . $user->icon . '.png') }}"
-      alt="ユーザーアイコン">
+       src="{{ $user->icon_image
+       ? asset('storage/' . $user->icon_image)
+       : asset('images/icon1.png') }}"
+       alt="ユーザーアイコン">
     </div>
 
     <div class="edit-form">

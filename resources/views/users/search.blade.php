@@ -43,8 +43,11 @@
 
       {{-- 左：アイコン＋ユーザー名 --}}
         <div class="user-icon">
-          <img src="{{ $user->icon_image ? asset('storage/' . $user->icon_image) : asset('images/icon' . $user->icon . '.png') }}"
-          alt="ユーザーアイコン">
+          <img
+           src="{{ $user->icon_image
+           ? asset('storage/' . $user->icon_image)
+           : asset('images/icon1.png') }}"
+           alt="ユーザーアイコン">
         </div>
 
         <div class="user-name">

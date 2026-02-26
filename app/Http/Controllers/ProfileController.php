@@ -42,7 +42,7 @@ class ProfileController extends Controller
 
     $user->save();
 
-    return redirect()->route('profile.edit')
-        ->with('success', 'プロフィールを更新しました。');
+    return redirect()->route('top');
+        // ->with('success', 'プロフィールを更新しました。');
 }
 }

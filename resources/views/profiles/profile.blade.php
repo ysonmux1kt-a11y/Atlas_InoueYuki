@@ -16,8 +16,10 @@
 
     <div class="profile-left">
       <img class="profile-icon"
-        src="{{ $user->icon_image ? asset('storage/' . $user->icon_image) : asset('images/icon' . $user->icon . '.png') }}"
-        alt="ユーザーアイコン">
+       src="{{ $user->icon_image
+       ? asset('storage/' . $user->icon_image)
+       : asset('images/icon1.png') }}"
+       alt="ユーザーアイコン">
 
       <div class="profile-text">
         <p>
@@ -53,7 +55,7 @@
   <div class="profile-divider"></div>
 
   {{-- =========================
-      投稿一覧（ここから構造変更）
+      投稿一覧
   ========================= --}}
   <div class="profile-posts">
     <div class="post-list">
@@ -65,10 +67,10 @@
             <!-- 左：アイコン -->
             <div class="post-user">
               <img
-          src="{{ $post->user->icon_image
-            ? asset('storage/' . $post->user->icon_image)
-            : asset('images/icon' . $post->user->icon . '.png') }}"
-          alt="ユーザーアイコン">
+               src="{{ optional($post->user)->icon_image
+               ? asset('storage/' . optional($post->user)->icon_image)
+               : asset('images/icon1.png') }}"
+               alt="ユーザーアイコン">
             </div>
 
             <!-- 右：本文ブロック -->
@@ -76,7 +78,7 @@
 
               <!-- 上段：ユーザー名 ＋ 投稿日時 -->
               <div class="post-head">
-                <p class="post-user-name">{{ $post->user->username }}</p>
+                <p class="post-user-name">{{ optional($post->user)->username ?? '不明なユーザー' }}</p>
                 <p class="top-date">{{ $post->created_at->format('Y-m-d H:i') }}</p>
               </div>
 
